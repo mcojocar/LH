@@ -88,7 +88,7 @@ zostavax.allocation.year1 <- function() {
 
   lambda <- vector(mode="double", length=5)
   arrival_rate <- vector(mode="double", length=5)
-  arrival_rate <- c(0.368,0.4,0.45,0.56,0.57)
+  #arrival_rate <- c(0.368,0.4,0.45,0.56,0.57)
   
   
     for (i in 1:5) {
@@ -102,11 +102,12 @@ zostavax.allocation.year1 <- function() {
       cat("\n After, we will have to account for", decimal_doses, "doses from the truncated decimal. \n")
       w <- floor(w)
       
-  # compute Poisson arrival likelihood
-      lambda[i] <- (1-0.2*runif(1,0,1)*(G.data.shuffled[2, i]))
-      #arrival_rate[i] <- (lambda[i]^(G.data.shuffled[2, i])*exp(-lambda[i]))/factorial(G.data.shuffled[2, i])
+  # compute Poisson arrival likelihood in x amount of time
+      #lambda[i] <- (1-0.2*runif(1,0,1)*(G.data.shuffled[2, i]))
+      lambda[i] <- (G.data.shuffled[2, i]*10^3)/52
+      arrival_rate[i] <- (lambda[i]^(G.data.shuffled[2, i])*exp(-lambda[i]))/factorial(G.data.shuffled[2, i])
       
-      #cat("The arrival likelihood in", shuffled[i], "is", arrival_rate[i], ".\n")
+      cat("The arrival likelihood in", shuffled[i], "is", arrival_rate[i], ".\n")
 
       
       objective_function <- function(i,j) {
@@ -299,7 +300,7 @@ zostavax.allocation.year2 <- function() {
   
   lambda <- vector(mode="double", length=5)
   arrival_rate <- vector(mode="double", length=5)
-  arrival_rate <- c(0.368,0.4,0.45,0.56,0.57)
+  #arrival_rate <- c(0.368,0.4,0.45,0.56,0.57)
   
   
   for (i in 1:5) {
@@ -314,10 +315,10 @@ zostavax.allocation.year2 <- function() {
     w <- floor(w)
     
     # compute Poisson arrival likelihood
-    lambda[i] <- (1-0.2*runif(1,0,1)*(G.data.shuffled[2, i]))
-    #arrival_rate[i] <- (lambda[i]^(G.data.shuffled[2, i])*exp(-lambda[i]))/factorial(G.data.shuffled[2, i])
+    lambda[i] <- (G.data.shuffled[2, i]*10^3)/52
+    arrival_rate[i] <- (lambda[i]^(G.data.shuffled[2, i])*exp(-lambda[i]))/factorial(G.data.shuffled[2, i])
     
-    #cat("The arrival likelihood in", shuffled[i], "is", arrival_rate[i], ".\n")
+    cat("The arrival likelihood in", shuffled[i], "is", arrival_rate[i], ".\n")
     
     
     objective_function <- function(i,j) {
@@ -499,7 +500,7 @@ zostavax.allocation.year3 <- function() {
   
   lambda <- vector(mode="double", length=5)
   arrival_rate <- vector(mode="double", length=5)
-  arrival_rate <- c(0.368,0.4,0.45,0.56,0.57)
+  #arrival_rate <- c(0.368,0.4,0.45,0.56,0.57)
   
   
   for (i in 1:5) {
@@ -514,10 +515,10 @@ zostavax.allocation.year3 <- function() {
     w <- floor(w)
     
     # compute Poisson arrival likelihood
-    lambda[i] <- (1-0.2*runif(1,0,1)*(G.data.shuffled[2, i]))
-    #arrival_rate[i] <- (lambda[i]^(G.data.shuffled[2, i])*exp(-lambda[i]))/factorial(G.data.shuffled[2, i])
+    lambda[i] <- (G.data.shuffled[2, i]*10^3)/52
+    arrival_rate[i] <- (lambda[i]^(G.data.shuffled[2, i])*exp(-lambda[i]))/factorial(G.data.shuffled[2, i])
     
-    #cat("The arrival likelihood in", shuffled[i], "is", arrival_rate[i], ".\n")
+    cat("The arrival likelihood in", shuffled[i], "is", arrival_rate[i], ".\n")
     
     
     objective_function <- function(i,j) {
